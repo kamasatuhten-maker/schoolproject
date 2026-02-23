@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn CSS - Student Guide</title>
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #264de4, #2965f1);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffd700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Topics Section */
+        .topics {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #264de4;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .topic-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .topic-card h3 {
+            color: #264de4;
+            margin-bottom: 15px;
+        }
+
+        /* Code Example Section */
+        .code-section {
+            background: #1a1a2e;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .code-section .section-title {
+            color: #ffd700;
+        }
+
+        .code-box {
+            background: #0d0d1a;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        .code-box pre {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .code-box .comment {
+            color: #6a9955;
+        }
+
+        .code-box .property {
+            color: #9cdcfe;
+        }
+
+        .code-box .value {
+            color: #ce9178;
+        }
+
+        .code-box .selector {
+            color: #d7ba7d;
+        }
+
+        /* Practice Section */
+        .practice {
+            padding: 80px 0;
+        }
+
+        .practice-area {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .practice-box {
+            border: 2px dashed #264de4;
+            padding: 40px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .practice-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .control-group label {
+            font-weight: 500;
+            color: #264de4;
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Resources Section */
+        .resources {
+            background: #e8f4fd;
+            padding: 80px 0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: scale(1.05);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .resource-card h4 {
+            color: #264de4;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .topics-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">CSS<span>Student</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#topics">Topics</a></li>
+                    <li><a href="#code">Examples</a></li>
+                    <li><a href="#practice">Practice</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Master CSS for Web Design</h1>
+            <p>Learn CSS from scratch and build beautiful, responsive websites. Perfect for beginners and intermediate students.</p>
+            <a href="#topics" class="btn">Start Learning</a>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="topics" id="topics">
+        <div class="container">
+            <h2 class="section-title">What You'll Learn</h2>
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon">📝</div>
+                    <h3>CSS Selectors</h3>
+                    <p>Learn how to target HTML elements using element, class, ID, and attribute selectors.</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">🎨</div>
+                    <h3>Colors & Backgrounds</h3>
+                    <p>Master color values, gradients, and background properties for stunning visuals.</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">📦</div>
+                    <h3>Box Model</h3>
+                    <p>Understand margin, padding, border, and content - the foundation of CSS layout.</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">📐</div>
+                    <h3>Flexbox</h3>
+                    <p>Create flexible layouts with CSS Flexbox - perfect for one-dimensional designs.</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">🔲</div>
+                    <h3>CSS Grid</h3>
+                    <p>Build complex two-dimensional layouts easily with CSS Grid system.</p>
+                </div>
+                <div class="topic-card">
+                    <div class="topic-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Make your websites look great on all devices using media queries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section class="code-section" id="code">
+        <div class="container">
+            <h2 class="section-title">Code Examples</h2>
+            
+            <div class="code-box">
+                <pre><span class="comment">/* Basic CSS Syntax */</span>
+<span class="selector">h1</span> {
+    <span class="property">color</span>: <span class="value">#264de4</span>;
+    <span class="property">font-size</span>: <span class="value">2.5rem</span>;
+    <span class="property">text-align</span>: <span class="value">center</span>;
+}
+
+<span class="selector">.button</span> {
+    <span class="property">background-color</span>: <span class="value">#ffd700</span>;
+    <span class="property">padding</span>: <span class="value">10px 20px</span>;
+    <span class="property">border-radius</span>: <span class="value">5px</span>;
+    <span class="property">border</span>: <span class="value">none</span>;
+}</pre>
+            </div>
+
+            <div class="code-box">
+                <pre><span class="comment">/* Flexbox Example */</span>
+<span class="selector">.container</span> {
+    <span class="property">display</span>: <span class="value">flex</span>;
+    <span class="property">justify-content</span>: <span class="value">center</span>;
+    <span class="property">align-items</span>: <span class="value">center</span>;
+    <span class="property">gap</span>: <span class="value">20px</span>;
+    <span class="property">flex-wrap</span>: <span class="value">wrap</span>;
+}</pre>
+            </div>
+
+            <div class="code-box">
+                <pre><span class="comment">/* Responsive Design */</span>
+<span class="selector">@media (max-width: 768px)</span> {
+    <span class="selector">.container</span> {
+        <span class="property">flex-direction</span>: <span class="value">column</span>;
+    }
+    
+    <span class="selector">h1</span> {
+        <span class="property">font-size</span>: <span class="value">1.5rem</span>;
+    }
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section class="practice" id="practice">
+        <div class="container">
+            <h2 class="section-title">Practice Area</h2>
+            <div class="practice-area">
+                <div class="practice-box" id="demoBox">
+                    <h3>Hello CSS!</h3>
+                    <p>Change my styles using the controls below</p>
+                </div>
+
+                <div class="practice-controls">
+                    <div class="control-group">
+                        <label>Background Color</label>
+                        <select id="bgColor" onchange="updateBox()">
+                            <option value="#264de4">Blue</option>
+                            <option value="#e74c3c">Red</option>
+                            <option value="#2ecc71">Green</option>
+                            <option value="#9b59b6">Purple</option>
+                            <option value="#ffd700">Yellow</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Text Color</label>
+                        <select id="textColor" onchange="updateBox()">
+                            <option value="white">White</option>
+                            <option value="#333">Dark</option>
+                            <option value="#ffd700">Gold</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Border Radius</label>
+                        <input type="range" id="borderRadius" min="0" max="50" value="10" oninput="updateBox()">
+                    </div>
+                    <div class="control-group">
+                        <label>Padding</label>
+                        <input type="range" id="padding" min="10" max="50" value="20" oninput="updateBox()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h4>MDN Documentation</h4>
+                    <p>Official CSS documentation and tutorials</p>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">🎓</div>
+                    <h4>FreeCodeCamp</h4>
+                    <p>Free CSS courses and exercises</p>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">💻</div>
+                    <h4>CodePen</h4>
+                    <p>Interactive CSS playground</p>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">🎮</div>
+                    <h4>CSS Grid Garden</h4>
+                    <p>Learn CSS Grid through games</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>CSS Student - Learn CSS the Easy Way</h3>
+            <div class="social-links">
+                <a href="#">📘</a>
+                <a href="#">🐦</a>
+                <a href="#">📸</a>
+                <a href="#">💼</a>
+            </div>
+            <p>&copy; 2024 CSS Student. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Practice Section -->
+    <script>
+        function updateBox() {
+            const box = document.getElementById('demoBox');
+            const bgColor = document.getElementById('bgColor').value;
+            const textColor = document.getElementById('textColor').value;
+            const borderRadius = document.getElementById('borderRadius').value;
+            const padding = document.getElementById('padding').value;
+
+            box.style.backgroundColor = bgColor;
+            box.style.color = textColor;
+            box.style.borderRadius = borderRadius + 'px';
+            box.style.padding = padding + 'px';
+        }
+    </script>
+
+</body>
+</html>
